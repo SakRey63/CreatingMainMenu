@@ -1,12 +1,11 @@
-using System;
 using UnityEngine;
 
 [RequireComponent (typeof(AudioSource))]
 public class SoundButton : MonoBehaviour
 {
-    private AudioSource _audioSource;
+    [SerializeField] private SoundControl _soundControl;
     
-    public event Action<AudioSource> IsClicked;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -15,6 +14,6 @@ public class SoundButton : MonoBehaviour
 
     public void PressedButtons()
     {
-        IsClicked?.Invoke(_audioSource);
+        _soundControl.PressedButtonMenu(_audioSource);
     }
 }

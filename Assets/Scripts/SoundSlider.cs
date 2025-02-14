@@ -1,14 +1,13 @@
-using System;
 using UnityEngine;
 
 public class SoundSlider : MonoBehaviour
 {
-    public event Action<string, float> IsSwiped;
-
+    [SerializeField] private SoundControl _soundControl;
+    
     public void ChangeVolume(float value)
     {
         string name = gameObject.name;
         
-        IsSwiped?.Invoke(name, value);
+        _soundControl.ChangeVolume(name, value);
     }
 }
