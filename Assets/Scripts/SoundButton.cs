@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent (typeof(AudioSource))]
 public class SoundButton : MonoBehaviour
 {
     private AudioSource _audioSource;

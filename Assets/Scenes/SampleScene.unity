@@ -243,8 +243,9 @@ GameObject:
   m_Component:
   - component: {fileID: 105044876}
   - component: {fileID: 105044877}
+  - component: {fileID: 105044878}
   m_Layer: 5
-  m_Name: VolumeBackgroundMusic
+  m_Name: BackgroundVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,9 +325,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 301900788}
-        m_TargetAssemblyTypeName: Audio, Assembly-CSharp
-        m_MethodName: ChangeBackgroundVolume
+      - m_Target: {fileID: 105044878}
+        m_TargetAssemblyTypeName: BackgroundVolume, Assembly-CSharp
+        m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -336,6 +337,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &105044878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105044875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f024d374fd5c9a4fb868f79e259a870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &155527784
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,8 +359,9 @@ GameObject:
   m_Component:
   - component: {fileID: 155527785}
   - component: {fileID: 155527786}
+  - component: {fileID: 155527787}
   m_Layer: 5
-  m_Name: VolumeButtons
+  m_Name: UiVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,6 +382,7 @@ RectTransform:
   - {fileID: 1211138299}
   - {fileID: 1005977834}
   - {fileID: 29888388}
+  - {fileID: 1082999546}
   m_Father: {fileID: 301900785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -426,9 +441,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 301900788}
-        m_TargetAssemblyTypeName: Audio, Assembly-CSharp
-        m_MethodName: ChangeUiVolume
+      - m_Target: {fileID: 155527787}
+        m_TargetAssemblyTypeName: UiVolume, Assembly-CSharp
+        m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -438,6 +453,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &155527787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155527784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26939b6846bc3d47a14e09d1b929fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &240380299
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +970,6 @@ RectTransform:
   - {fileID: 1601557397}
   - {fileID: 1325483013}
   - {fileID: 155527785}
-  - {fileID: 1082999546}
   - {fileID: 105044876}
   m_Father: {fileID: 1430347098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1003,6 +1029,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mixer: {fileID: 24300002, guid: 0cd62fddc72e282408d9414e8727c613, type: 2}
+  _background: {fileID: 105044878}
+  _master: {fileID: 1325483015}
+  _ui: {fileID: 155527787}
+  _mute: {fileID: 1601557401}
 --- !u!1 &354648705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,11 +1980,11 @@ RectTransform:
   m_LocalScale: {x: 1.0000306, y: 1.0000306, z: 1.0000306}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 301900785}
+  m_Father: {fileID: 155527785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: -115}
+  m_AnchoredPosition: {x: 199.99998, y: -15.000008}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1082999547
@@ -2831,8 +2861,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1325483013}
   - component: {fileID: 1325483014}
+  - component: {fileID: 1325483015}
   m_Layer: 5
-  m_Name: VolumeSounds
+  m_Name: MasterVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2912,9 +2943,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 301900788}
-        m_TargetAssemblyTypeName: Audio, Assembly-CSharp
-        m_MethodName: ChangeMasterVolume
+      - m_Target: {fileID: 1325483015}
+        m_TargetAssemblyTypeName: MasterVolume, Assembly-CSharp
+        m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2924,6 +2955,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1325483015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325483012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c4680aa6414d44f8834c4a36ef4530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1369945348
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3251,6 @@ GameObject:
   - component: {fileID: 1576384766}
   - component: {fileID: 1576384765}
   - component: {fileID: 1576384764}
-  - component: {fileID: 1576384768}
   - component: {fileID: 1576384767}
   - component: {fileID: 1576384769}
   m_Layer: 5
@@ -3428,19 +3470,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1576384768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576384762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1760238a9700b9b4eb2109aa7a16823d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mixer: {fileID: 0}
 --- !u!114 &1576384769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3540,19 +3569,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 301900788}
         m_TargetAssemblyTypeName: Audio, Assembly-CSharp
-        m_MethodName: ButtonMasterMusic
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1601557401}
-        m_TargetAssemblyTypeName: MuteButton, Assembly-CSharp
-        m_MethodName: ChangeIconColor
+        m_MethodName: ClickedButtonMasterMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

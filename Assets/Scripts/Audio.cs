@@ -3,44 +3,54 @@ using UnityEngine.Audio;
 
 public class Audio : MonoBehaviour
 {
-    private const string BackgroundVolume = "BackgroundVolume";
-    private const string UiVolume = "UiVolume";
     private const string MasterVolume = "MasterVolume";
     
     [SerializeField] private AudioMixerGroup _mixer;
+    [SerializeField] private BackgroundVolume _background;
+    [SerializeField] private MasterVolume _master;
+    [SerializeField] private UiVolume _ui;
+    [SerializeField] private MuteButton _mute;
 
-    private bool _onClick = false;
+    private bool _isClick = false;
     private float _minVolume = -80;
     private float _maxVolume = 0;
 
-    public void ChangeMasterVolume(float volume)
+    private void OnEnable()
     {
-        _mixer.audioMixer.SetFloat(MasterVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
-    }
-    
-    public void ChangeUiVolume(float volume)
-    {
-        _mixer.audioMixer.SetFloat(UiVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
-    }
-    
-    public void ChangeBackgroundVolume(float volume)
-    {
-        _mixer.audioMixer.SetFloat(BackgroundVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
+        _background.IsSwiped += ChangeVolume;
+        _master.IsSwiped += ChangeVolume;
+        _ui.IsSwiped += ChangeVolume;
     }
 
-    public void ButtonMasterMusic()
+    private void OnDisable()
     {
-        if (_onClick == false)
+        _background.IsSwiped -= ChangeVolume;
+        _master.IsSwiped -= ChangeVolume;
+        _ui.IsSwiped -= ChangeVolume;
+    }
+
+    public void ClickedButtonMasterMusic()
+    {
+        if (_isClick == false)
         {
             _mixer.audioMixer.SetFloat(MasterVolume, _minVolume);
             
-            _onClick = true;
+            _mute.ChangeIconColor(_isClick);
+            
+            _isClick = true;
         }
         else
         {
             _mixer.audioMixer.SetFloat(MasterVolume, _maxVolume);
+            
+            _mute.ChangeIconColor(_isClick);
 
-            _onClick = false;
+            _isClick = false;
         }
+    }
+    
+    private void ChangeVolume(string name, float volume)
+    {
+        _mixer.audioMixer.SetFloat(name, Mathf.Lerp(_minVolume, _maxVolume, volume));
     }
 }
