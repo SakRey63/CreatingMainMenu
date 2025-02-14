@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class MasterVolume : MonoBehaviour
+public class SoundSlider : MonoBehaviour
 {
     public event Action<string, float> IsSwiped;
 

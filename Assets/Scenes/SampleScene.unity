@@ -326,7 +326,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 105044878}
-        m_TargetAssemblyTypeName: BackgroundVolume, Assembly-CSharp
+        m_TargetAssemblyTypeName: SoundSlider, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
@@ -442,7 +442,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 155527787}
-        m_TargetAssemblyTypeName: UiVolume, Assembly-CSharp
+        m_TargetAssemblyTypeName: SoundSlider, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 155527784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26939b6846bc3d47a14e09d1b929fc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f024d374fd5c9a4fb868f79e259a870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &240380299
@@ -477,8 +477,8 @@ GameObject:
   - component: {fileID: 240380303}
   - component: {fileID: 240380302}
   - component: {fileID: 240380301}
-  - component: {fileID: 240380304}
   - component: {fileID: 240380305}
+  - component: {fileID: 240380304}
   m_Layer: 5
   m_Name: AboutAuthors
   m_TagString: Untagged
@@ -1029,10 +1029,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mixer: {fileID: 24300002, guid: 0cd62fddc72e282408d9414e8727c613, type: 2}
-  _background: {fileID: 105044878}
-  _master: {fileID: 1325483015}
-  _ui: {fileID: 155527787}
-  _mute: {fileID: 1601557401}
+  _masterSound: {fileID: 1325483015}
+  _uiSound: {fileID: 155527787}
+  _musicSound: {fileID: 105044878}
+  _play: {fileID: 912543307}
+  _authors: {fileID: 240380305}
+  _exit: {fileID: 1576384768}
 --- !u!1 &354648705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,10 +1593,10 @@ GameObject:
   - component: {fileID: 912543305}
   - component: {fileID: 912543304}
   - component: {fileID: 912543303}
-  - component: {fileID: 912543306}
   - component: {fileID: 912543307}
+  - component: {fileID: 912543306}
   m_Layer: 5
-  m_Name: Game
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2412,7 +2414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a96e5259c324fe140b202c16f1eb2c74, type: 2}
   m_sharedMaterial: {fileID: 1049664339747968187, guid: a96e5259c324fe140b202c16f1eb2c74, type: 2}
@@ -2944,7 +2946,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1325483015}
-        m_TargetAssemblyTypeName: MasterVolume, Assembly-CSharp
+        m_TargetAssemblyTypeName: SoundSlider, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
@@ -2964,7 +2966,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325483012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c4680aa6414d44f8834c4a36ef4530, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f024d374fd5c9a4fb868f79e259a870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1369945348
@@ -3251,8 +3253,8 @@ GameObject:
   - component: {fileID: 1576384766}
   - component: {fileID: 1576384765}
   - component: {fileID: 1576384764}
+  - component: {fileID: 1576384768}
   - component: {fileID: 1576384767}
-  - component: {fileID: 1576384769}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -3324,7 +3326,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576384769}
+      - m_Target: {fileID: 1576384768}
         m_TargetAssemblyTypeName: SoundButton, Assembly-CSharp
         m_MethodName: PressedButtons
         m_Mode: 1
@@ -3470,7 +3472,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1576384769
+--- !u!114 &1576384768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3567,9 +3569,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 301900788}
-        m_TargetAssemblyTypeName: Audio, Assembly-CSharp
-        m_MethodName: ClickedButtonMasterMusic
+      - m_Target: {fileID: 1601557401}
+        m_TargetAssemblyTypeName: MuteButton, Assembly-CSharp
+        m_MethodName: ClickButtonMute
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3630,6 +3632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 40582722}
+  _soundControl: {fileID: 301900788}
 --- !u!1 &1784214388
 GameObject:
   m_ObjectHideFlags: 0

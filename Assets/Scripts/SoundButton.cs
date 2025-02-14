@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 [RequireComponent (typeof(AudioSource))]
 public class SoundButton : MonoBehaviour
 {
     private AudioSource _audioSource;
+    
+    public event Action<AudioSource> IsClicked;
 
     private void Awake()
     {
@@ -12,6 +15,6 @@ public class SoundButton : MonoBehaviour
 
     public void PressedButtons()
     {
-        _audioSource.Play();
+        IsClicked?.Invoke(_audioSource);
     }
 }
